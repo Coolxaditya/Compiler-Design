@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.10)
+project(cpp-vulnerability-analyzer)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Include directories
+include_directories(include)
+
+# Source files
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+# Create main executable
+add_executable(cpp-vulnerability-analyzer ${SOURCES})
+
+# If you're on a platform that requires linking to filesystem
+target_link_libraries(cpp-vulnerability-analyzer stdc++fs)
+
+# Add test executable
+file(GLOB TEST_SOURCES "tests/*.cpp")
+add_executable(run_tests ${TEST_SOURCES})
+target_link_libraries(run_tests stdc++fs)
